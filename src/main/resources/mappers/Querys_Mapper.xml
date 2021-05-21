@@ -1,0 +1,31 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao">
+
+<!--     <resultMap id="PersonaResultMap" type="Tarjeta"> -->
+<!--         <id column="id" property="id" /> -->
+<!--         <result column="nombres" property="nombres" /> -->
+<!--         <result column="apellidos" property="apellidos" /> -->
+<!--     </resultMap> -->
+
+    <select id="buscarpersonas" resultType="pe.com.uba.model.Persona">
+        select  id, nombres,apellidos,email from persona order by id
+    </select>   
+
+    <delete id="deletePersona" parameterType="pe.com.uba.model.Persona">
+        delete from persona where id=#{id}
+    </delete>
+    
+    <update id="updatePersona" parameterType="pe.com.uba.model.Persona">
+        update persona set nombres=#{nombres},apellidos=#{apellidos},email=#{email} where id=#{id}
+    </update>
+    
+    <insert id="registraPersona" parameterType="pe.com.uba.model.Persona">        
+        insert into persona (nombres,apellidos,email) values (#{nombres},#{apellidos},#{email})
+    </insert>    
+    
+</mapper>
+
+
